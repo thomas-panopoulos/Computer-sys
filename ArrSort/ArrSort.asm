@@ -1,83 +1,105 @@
-// Sorts the array of length R2 whose first element is at RAM[R1] in ascending order in place. Sets R0 to True (-1) when complete.
-// (R0, R1, R2 refer to RAM[0], RAM[1], and RAM[2], respectively.)
-
-// Put your code here.
-(RESET)
-    @count
-    M=1
-    @R1
+@R1
     D=M
-    @previndex
+    @swapindex
     M=D
-    @index
-    M=D+1
-(LOOP)
     @R2
     D=M
-    @count
-    D=D-M
-    @STOP
-    D;JEQ
-
-    @previndex
-    A=M
-    D=M
-    @POS
-    D;JGT
-(NEG)
-    @index
-    A=M
-    D=M
-    @NEGNEG
-    D;JLT
-    @INC
-    0;JMP
-(POS)
-    @index
-    A=M
-    D=M
-    @SWAP
-    D;JLT
-(NEGNEG)
-    @previndex
-    A=M
-    D=M
-    @index
-    A=M
-    D=D-M
-    @SWAP
-    D;JGT
-    @INC
+    @counter
+    M=D
+    @LOOP
     0;JMP
 
 (SWAP)
-    @previndex
+    @R2
+    MD=M-1
+    @STOP
+    D;JLE
+    @counter
+    M=D
+    @R1
+    M=M-D
+    @swapornot
+    D=M
+    @NEXTPASS
+    D;JLE
+    @R1
+    A=M
+    D=M
+    @swapindex
+    A=M
+    MD=M+D
+    @R1
+    A=M
+    MD=D-M
+    @swapindex
+    A=M
+    M=M-D
+
+(NEXTPASS)
+    @swapornot
+    M=0
+    @R1
+    MD=M+1
+    @swapindex
+    M=D
+
+(LOOP)
+    @R1
     A=M
     D=M
     @R0
     M=D
-    @index
-    A=M
-    D=M
-    @previndex
-    A=M
-    M=D
+
+(FINDMININDEX)
+    @counter
+    MD=M-1
+    @SWAP
+    D;JLE
     @R0
     D=M
-    @index
+    @POS
+    D;JGE
+
+(NEG)
+    @R1
+    M=M+1
     A=M
-    M=D
-    @RESET
+    D=M
+    @FINDMININDEX
+    D;JGE
+    @R0
+    D=M-D
+    @NEWMIN
+    D;JGT
+    @FINDMININDEX
     0;JMP
     
-(INC)
-    @index
+(POS)
+    @R1
     M=M+1
-    @previndex
-    M=M+1
-    @count
-    M=M+1
-    @LOOP
+    A=M
+    D=M
+    @NEWMIN
+    D;JLT
+    @R0
+    D=M-D
+    @NEWMIN
+    D;JGT
+    @FINDMININDEX
+    0;JMP
+    
+(NEWMIN)
+    @R1
+    D=M
+    @swapindex
+    M=D
+    A=M
+    D=M
+    @R0
+    M=D
+    @swapornot
+    M=1
+    @FINDMININDEX
     0;JMP
 
 (STOP)
