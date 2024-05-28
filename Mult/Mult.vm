@@ -19,7 +19,7 @@ pop temp 1  // temp 1 now holds the value of y
 push temp 1
 push constant 0
 eq
-if-goto YIsZero
+if-goto END
 
 // Main multiplication loop
 label LoopStart
@@ -45,12 +45,9 @@ goto LoopStart
 
 // End of loop
 label LoopEnd
-// Return the result in local 0
 push local 0
+goto END
 
-// If y is zero, just return a
-label YIsZero
-push local 0
-
+// End of program
 label END
 goto END
