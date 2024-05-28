@@ -1,0 +1,4 @@
+function ReturnFunction 0
+push constant 20
+return
+// return from function, return value 20

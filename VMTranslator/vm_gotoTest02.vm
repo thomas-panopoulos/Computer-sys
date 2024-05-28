@@ -1,0 +1,11 @@
+label BEGIN
+push constant 30
+goto MIDDLE
+push constant 40
+label MIDDLE
+push constant 50
+got END 
+push constant 60
+label END
+push constant 70
+//jump to middle (skip 40) and then to end (skip 60)

@@ -1,0 +1,6 @@
+push constant 1
+if-goto TRUE_LABEL
+push constant 10
+label TRUE_LABEL
+push constant 20
+//jump to true_label (skip push constant 10)

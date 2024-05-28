@@ -1,0 +1,3 @@
+push constant 10
+
+//stack should contain 10

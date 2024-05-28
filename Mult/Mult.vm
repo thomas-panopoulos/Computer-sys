@@ -3,51 +3,111 @@
 // x & y are static variables
 
 // Put your code here.
-// Initialize local variable a to 0
-push constant 0
-pop local 0  // a = 0
 
-// Load x into temp 0
 push static 0
-pop temp 0  // temp 0 now holds the value of x
-
-// Load y into temp 1
+pop temp 0
 push static 1
-pop temp 1  // temp 1 now holds the value of y
+pop temp 1
+push constant 0
+pop local 0
 
-// If y is zero, the result is zero (we can skip the loop)
+push temp 0
+push constant 0
+eq
+if-goto ZERO
+
 push temp 1
 push constant 0
 eq
-if-goto END
+if-goto ZERO
 
-// Main multiplication loop
-label LoopStart
-push temp 1  // y
+push temp 1
 push constant 0
-eq
-if-goto LoopEnd  // if y == 0, exit loop
+lt
+if-goto NEG
 
-// a = a + x
-push local 0  // a
-push temp 0  // x
+push temp 0
+push constant 0
+lt
+if-goto LOOP
+
+push static 1
+push static 0
+gt
+if-goto SWAP
+goto LOOP
+
+label SWAP
+push static 1
+pop temp 0
+push static 0
+pop temp 1
+push constant 0
+pop local 0
+goto LOOP
+
+label LOOP
+push temp 0
+push local 0
 add
-pop local 0  // a = a + x
-
-// y = y - 1
+pop local 0
 push temp 1
 push constant 1
 sub
-pop temp 1  // y = y - 1
-
-// Repeat loop
-goto LoopStart
-
-// End of loop
-label LoopEnd
-push local 0
+pop temp 1
+push constant 0
+push temp 1
+eq 
+not
+if-goto LOOP
 goto END
 
-// End of program
+
+label NEG
+push temp 0
+push constant 0
+lt
+if-goto NEG2
+push temp 1
+neg 
+pop temp 1
+goto LOOP1
+
+label LOOP1
+push local 0
+push temp 1
+add
+pop local 0
+push temp 0
+push constant 1
+sub
+pop temp 0
+push constant 0
+push temp 0
+eq 
+not
+if-goto LOOP1
+
+push local 0
+neg
+pop local 0
+goto END
+
+label NEG2
+push temp 0
+neg
+pop temp 0
+push temp 1
+neg
+pop temp 1
+goto LOOP
+
+label ZERO
+push constant 0
+pop local 0
+goto END
+
 label END
 goto END
+
+

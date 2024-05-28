@@ -1,0 +1,7 @@
+label START 
+push constant 5
+goto END 
+push constant 10
+label END
+push constant 20
+//jump to end (should skip push constant 10)

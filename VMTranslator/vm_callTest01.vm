@@ -1,0 +1,4 @@
+push constant 5
+push constant 10
+call AddTwoNumbers 2
+//calls the function AddTwoNumbers that has 2 arguments

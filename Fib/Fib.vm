@@ -3,57 +3,29 @@
 
 // Put your code here.
 
-
 function Fib.fib 0
-
-// Push the argument n onto the stack
 push argument 0
+push constant 2
+lt
 
-// Base case: if n == 0, return 0
-push constant 0
-eq
-if-goto BASE_CASE_0
+if-goto BASE_CASE
 
-// Base case: if n == 1, return 1
+goto RECURSIVE_CASE
+label BASE_CASE
 push argument 0
-push constant 1
-eq
-if-goto BASE_CASE_1
+return
 
-// Recursive case: return Fib.fib(n-1) + Fib.fib(n-2)
-
-// Calculate Fib.fib(n-1)
+label RECURSIVE_CASE
 push argument 0
 push constant 1
 sub
+
 call Fib.fib 1
-
-// Store the result of Fib.fib(n-1) in temp 0
-pop temp 0
-
-// Calculate Fib.fib(n-2)
 push argument 0
 push constant 2
 sub
+
 call Fib.fib 1
-
-// Store the result of Fib.fib(n-2) in temp 1
-pop temp 1
-
-// Add the results of Fib.fib(n-1) and Fib.fib(n-2)
-push temp 0
-push temp 1
+        
 add
-
-// Return the result
-return
-
-// Base case: return 0
-label BASE_CASE_0
-push constant 0
-return
-
-// Base case: return 1
-label BASE_CASE_1
-push constant 1
 return

@@ -1,0 +1,6 @@
+push constant 0
+if-goto FALSE_LABEL
+push constant 30
+label FALSE_LABEL
+push constant 40
+//jump to false_llabel (push 30 before 40)

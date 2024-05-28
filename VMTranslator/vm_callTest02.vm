@@ -1,0 +1,2 @@
+call NoArgFunction 0
+//calls function with 0 arguments

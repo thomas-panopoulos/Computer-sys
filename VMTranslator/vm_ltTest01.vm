@@ -1,0 +1,13 @@
+push constant 5
+push constant 10
+lt
+//stack should contain -1 (true) 
+push constant 10
+push cosntant 5
+lt
+//stack should contain 0 (false)
+
+push constant 10
+push constant 10
+lt
+//stack should contain 0 (false)

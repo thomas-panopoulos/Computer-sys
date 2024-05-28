@@ -1,0 +1,3 @@
+function VoidFunction 0
+return
+// no specific return value

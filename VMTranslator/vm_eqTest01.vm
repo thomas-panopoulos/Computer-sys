@@ -1,0 +1,9 @@
+push constant 10
+push constant 10
+eq
+//stack should contain -1
+
+push constant 20
+push constant 10
+eq
+//stack should contain 0
