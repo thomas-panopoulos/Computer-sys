@@ -47,7 +47,6 @@ goto LoopStart
 label LoopEnd
 // Return the result in local 0
 push local 0
-return
 
 // If y is zero, just return a
 label YIsZero
