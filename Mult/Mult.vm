@@ -3,44 +3,55 @@
 // x & y are static variables
 
 // Put your code here.
+// Initialize local variable a to 0
 push constant 0
-pop local 0 //a = 0
+pop local 0  // a = 0
 
-
-// load x into d
+// Load x into temp 0
 push static 0
-pop temp 0 //temp 0 now holds value of x
+pop temp 0  // temp 0 now holds the value of x
 
-//load y into d
+// Load y into temp 1
 push static 1
-pop temp 1 //temp 1 holds y
+pop temp 1  // temp 1 now holds the value of y
 
-// if y is zero the res is 0
+// If y is zero, the result is zero (we can skip the loop)
 push temp 1
-if-goto YIsZero
-
-//main loop
-label LoopStart
-push temp 1 // y
 push constant 0
 eq
-if-goto LoopEnd
+if-goto YIsZero
 
-// a = a+x
-push local 0 //a
-push temp 0 // x
+// Main multiplication loop
+label LoopStart
+push temp 1  // y
+push constant 0
+eq
+if-goto LoopEnd  // if y == 0, exit loop
+
+// a = a + x
+push local 0  // a
+push temp 0  // x
 add
-pop local 0 //a = a+x
+pop local 0  // a = a + x
 
-//y=y-1
+// y = y - 1
 push temp 1
 push constant 1
 sub
-pop temp 1 //y=y-1
+pop temp 1  // y = y - 1
 
+// Repeat loop
 goto LoopStart
+
+// End of loop
 label LoopEnd
+// Return the result in local 0
+push local 0
+return
+
+// If y is zero, just return a
 label YIsZero
+push local 0
 
 label END
 goto END
