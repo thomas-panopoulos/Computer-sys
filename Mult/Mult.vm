@@ -3,8 +3,44 @@
 // x & y are static variables
 
 // Put your code here.
+push constant 0
+pop local 0 //a = 0
 
 
+// load x into d
+push static 0
+pop temp 0 //temp 0 now holds value of x
+
+//load y into d
+push static 1
+pop temp 1 //temp 1 holds y
+
+// if y is zero the res is 0
+push temp 1
+if-goto YIsZero
+
+//main loop
+label LoopStart
+push temp 1 // y
+push constant 0
+eq
+if-goto LoopEnd
+
+// a = a+x
+push local 0 //a
+push temp 0 // x
+add
+pop local 0 //a = a+x
+
+//y=y-1
+push temp 1
+push constant 1
+sub
+pop temp 1 //y=y-1
+
+goto LoopStart
+label LoopEnd
+label YIsZero
 
 label END
 goto END
