@@ -2,7 +2,7 @@
 // a & b are both supplied as arguments
 
 // Put your code here.
-function ArrMax.arrMax 1
+function ArrMax.arrMax 6
 //arg m _> pointer to the array (arg 0), n _> num of ele in arr (arg 1)
 
 push argument 0
