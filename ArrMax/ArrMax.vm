@@ -2,11 +2,11 @@
 // a & b are both supplied as arguments
 
 // Put your code here.
-function ArrMax.arrMax 6
+function ArrMax.arrMax 2
 //arg m _> pointer to the array (arg 0), n _> num of ele in arr (arg 1)
 
-push argument 0
-pop pointer 1 //set that to base addr of array
+push argument 0 //*arr
+pop pointer 1 //set that to base addr of array (memory[that] = m)
 push that 0 //value at that[0]
 pop local 0 // local 0 (max) = that[0]
 
@@ -27,7 +27,7 @@ label CONTINUE_LOOP
 push argument 0 //start of array
 push local 1 //i
 add //increment *arr == *arr+1 or arr[1]
-pop pointer 1 //that points to the current element in the array 
+pop pointer 1 //that points to the current element in the array that[i+1]
 push that 0 //compare next ele (pointer 1) to current that[i] (maybe error source)
 gt 
 if-goto UPDATE_MAX
